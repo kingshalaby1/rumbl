@@ -25,6 +25,7 @@ defmodule Rumbl.Accounts.User do
     |> cast(params, [:password])
     |> validate_required([:password])
     |> validate_length(:password, min: 6, max: 20)
+    |> unique_constraint(:username)
     |> put_pass_hash()
   end
 
